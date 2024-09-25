@@ -5,6 +5,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Global()
 @Module({
@@ -23,11 +25,12 @@ import { join } from 'path';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
         entities: [join(process.cwd(), 'dist/**/*.entity.js')],
-        // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
       }),
     }),
-    OffersModule
+    OffersModule,
+    AuthModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

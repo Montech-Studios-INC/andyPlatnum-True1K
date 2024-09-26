@@ -1,9 +1,20 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { User } from 'src/users/users.entity';
+import { 
+  Column, 
+  CreateDateColumn, 
+  Entity, 
+  ManyToOne, 
+  PrimaryGeneratedColumn, 
+  UpdateDateColumn
+} from 'typeorm'
 
 @Entity({ name: 'offers' })
 export class Offer {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToOne(() => User, (user) => user.offers)
+  artist: User;
 
   @Column()
   name: string;
@@ -50,6 +61,9 @@ export class Offer {
   @Column()
   customUrl: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  timestamp: Date
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
+import { FanInteractionsModule } from './fan_interactions/fan_interactions.module';
 import { UsersModule } from './users/users.module';
 
 @Global()
@@ -48,6 +49,7 @@ import { UsersModule } from './users/users.module';
     }),
     OffersModule,
     AuthModule,
+    FanInteractionsModule,
     UsersModule
   ],
   controllers: [AppController],

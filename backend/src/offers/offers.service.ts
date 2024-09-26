@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { UpdateOfferDto } from './dto/update-offer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Offer } from './entities/offer.entity';
+import { Offer } from './entities/offers.entity';
 import { Repository } from 'typeorm';
 import { generateCustomUrl } from './utils';
 

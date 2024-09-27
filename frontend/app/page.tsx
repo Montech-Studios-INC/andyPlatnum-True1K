@@ -18,7 +18,8 @@ import RPC from "./ethersRPC";
 
 // IMP START - Dashboard Registration
 const clientId =
-  'BAU-WbybixeF8fH_sAvyRgCRyWE7vqKeDrBQvqsxeJeSDjlrZLzKddBoggq9DAfLvJH_FLf0r1UyQ1fNAXn-m1Y' // get from https://dashboard.web3auth.io
+  'BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ' // get from https://dashboard.web3auth.io
+  // 'BAU-WbybixeF8fH_sAvyRgCRyWE7vqKeDrBQvqsxeJeSDjlrZLzKddBoggq9DAfLvJH_FLf0r1UyQ1fNAXn-m1Y' // get from https://dashboard.web3auth.io
 // IMP END - Dashboard Registration
 
 // IMP START - Chain Config
@@ -46,6 +47,11 @@ const web3AuthOptions: Web3AuthOptions = {
   web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
   privateKeyProvider,
 }
+// const provider = await web3auth.connect({
+//   verifier: 'w3a-node-demo', // replace with your verifier name
+//   verifierId: sub, // replace with your verifier id's value, for example, sub value of JWT Token, or email address.
+//   idToken: token // replace with your newly created unused JWT Token.
+// })
 const web3auth = new Web3Auth(web3AuthOptions);
 // IMP END - SDK Initialization
 

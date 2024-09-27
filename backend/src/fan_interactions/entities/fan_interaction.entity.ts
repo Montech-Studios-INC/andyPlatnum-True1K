@@ -1,5 +1,5 @@
 import { Offer } from "src/offers/entities/offers.entity";
-import { User } from "src/users/users.entity";
+import { User } from "src/users/entities/users.entity";
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 

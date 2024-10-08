@@ -1,3 +1,4 @@
+import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 
 import { Inter } from "next/font/google";
@@ -5,15 +6,19 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Web3Auth NextJS Quick Start",
-  description: "Web3Auth NextJS Quick Start",
+    title: "TrueOneK",
+    description: "Redefining Fan Engagement for the Digital Age"
 };
 
 // eslint-disable-next-line no-undef
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
-}
+    return (
+        <ViewTransitions>
+            <html lang="en">
+                <body className={inter.className}>
+                    {children}
+                </body>
+            </html>
+        </ViewTransitions>
+    );
+};

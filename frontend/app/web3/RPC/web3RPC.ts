@@ -4,31 +4,26 @@ import Web3 from "web3";
 const getChainId = async (provider: IProvider): Promise<string> => {
     try {
         const web3 = new Web3(provider);
-
-        // Get the connected Chain's ID
-        const chainId = await web3.eth.getChainId();
-
+        const chainId = await web3.eth.getChainId(); // Get the connected Chain's ID
         return chainId.toString();
     } catch (error) {
         return error as string;
-    }
-}
+    };  
+};
 
 const getAccounts = async (provider: IProvider): Promise<any> => {
     try {
         const web3 = new Web3(provider as any);
-
-        // Get user's Ethereum public address
-        const address = (await web3.eth.getAccounts());
-
+        const address = (await web3.eth.getAccounts()); // Get user's Ethereum public address
         return address;
     } catch (error) {
         return error;
-    }
-}
+    };  
+};
 
 const getBalance = async (provider: IProvider): Promise<string> => {
     try {
+
         const web3 = new Web3(provider as any);
 
         // Get user's Ethereum public address
@@ -41,13 +36,15 @@ const getBalance = async (provider: IProvider): Promise<string> => {
         );
 
         return balance;
+
     } catch (error) {
         return error as string;
-    }
-}
+    };  
+};
 
 const signMessage = async (provider: IProvider): Promise<string> => {
     try {
+
         const web3 = new Web3(provider as any);
 
         // Get user's Ethereum public address
@@ -63,13 +60,15 @@ const signMessage = async (provider: IProvider): Promise<string> => {
         );
 
         return signedMessage;
+
     } catch (error) {
         return error as string;
-    }
-}
+    };  
+};
 
 const sendTransaction = async (provider: IProvider): Promise<any> => {
     try {
+
         const web3 = new Web3(provider as any);
 
         // Get user's Ethereum public address
@@ -83,7 +82,7 @@ const sendTransaction = async (provider: IProvider): Promise<any> => {
 
         if (balance === "0") {
             throw new Error("Insufficient balance, please fund your account to use this");
-        }
+        };
 
         const amount = web3.utils.toWei("0.001", "ether"); // Convert 1 ether to wei
         let transaction = {
@@ -91,7 +90,7 @@ const sendTransaction = async (provider: IProvider): Promise<any> => {
             to: address,
             data: "0x",
             value: amount,
-        }
+        };
 
         // calculate gas transaction before sending
         transaction = { ...transaction, gas: await web3.eth.estimateGas(transaction) } as any;
@@ -100,15 +99,12 @@ const sendTransaction = async (provider: IProvider): Promise<any> => {
         const receipt = await web3.eth.sendTransaction(transaction);
 
         return JSON.stringify(receipt, (key, value) =>
-            typeof value === 'bigint'
-                ? value.toString()
-                : value // return everything else unchanged
+            typeof value === "bigint" ? value.toString() : value // return everything else unchanged
         );
+
     } catch (error) {
         return error as string;
-    }
-}
-
-
+    };  
+};
 
 export default {getChainId, getAccounts, getBalance, sendTransaction, signMessage};

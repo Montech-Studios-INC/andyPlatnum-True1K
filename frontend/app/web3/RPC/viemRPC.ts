@@ -1,5 +1,5 @@
-import { createWalletClient, createPublicClient, custom, formatEther, parseEther } from 'viem'
-import { mainnet, polygonAmoy, sepolia } from 'viem/chains'
+import { createWalletClient, createPublicClient, custom, formatEther, parseEther } from "viem";
+import { mainnet, polygonAmoy, sepolia } from "viem/chains";
 import type { IProvider } from "@web3auth/base";
 
 const getViewChain = (provider: IProvider) => {
@@ -12,24 +12,27 @@ const getViewChain = (provider: IProvider) => {
             return sepolia;
         default:
             return mainnet;
-    }
-}
+    };
+};
 
 const getChainId = async (provider: IProvider): Promise<any> => {
     try {
+
         const walletClient = createWalletClient({
             transport: custom(provider)
-        })
+        });
 
-        const address = await walletClient.getAddresses()
-        console.log(address)
+        const address = await walletClient.getAddresses();
+        console.log(address);
 
-        const chainId = await walletClient.getChainId()
+        const chainId = await walletClient.getChainId();
         return chainId.toString();
+
     } catch (error) {
         return error;
-    }
-}
+    };
+};
+
 const getAccounts = async (provider: IProvider): Promise<any> => {
     try {
 
@@ -41,17 +44,19 @@ const getAccounts = async (provider: IProvider): Promise<any> => {
         const address = await walletClient.getAddresses();
 
         return address;
+
     } catch (error) {
         return error;
-    }
-}
+    };
+};
 
 const getBalance = async (provider: IProvider): Promise<string> => {
     try {
+
         const publicClient = createPublicClient({
             chain: getViewChain(provider),
             transport: custom(provider)
-        })
+        });
 
         const walletClient = createWalletClient({
             chain: getViewChain(provider),
@@ -61,19 +66,22 @@ const getBalance = async (provider: IProvider): Promise<string> => {
         const address = await walletClient.getAddresses();
 
         const balance = await publicClient.getBalance({ address: address[0] });
-        console.log(balance)
+        console.log(balance);
+
         return formatEther(balance);
+
     } catch (error) {
         return error as string;
-    }
-}
+    };
+};
 
 const sendTransaction = async (provider: IProvider): Promise<any> => {
     try {
+
         const publicClient = createPublicClient({
             chain: getViewChain(provider),
             transport: custom(provider)
-        })
+        });
 
         const walletClient = createWalletClient({
             chain: getViewChain(provider),
@@ -91,22 +99,22 @@ const sendTransaction = async (provider: IProvider): Promise<any> => {
             to: destination,
             value: amount,
         });
-        console.log(hash)
+        console.log(hash);
+
         const receipt = await publicClient.waitForTransactionReceipt({ hash });
 
-
-        return JSON.stringify(receipt, (key, value) =>
-            typeof value === 'bigint'
-                ? value.toString()
-                : value // return everything else unchanged
+        return JSON.stringify(receipt, (_key, value) =>
+            typeof value === "bigint" ? value.toString() : value // return everything else unchanged
         );
+
     } catch (error) {
         return error;
-    }
-}
+    };
+};
 
 const signMessage = async (provider: IProvider): Promise<any> => {
     try {
+
         const walletClient = createWalletClient({
             chain: getViewChain(provider),
             transport: custom(provider)
@@ -125,9 +133,10 @@ const signMessage = async (provider: IProvider): Promise<any> => {
         console.log(hash)
 
         return hash.toString();
+
     } catch (error) {
         return error;
-    }
-}
+    };
+};
 
 export default {getChainId, getAccounts, getBalance, sendTransaction, signMessage};

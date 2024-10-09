@@ -1,14 +1,10 @@
+import { Inter } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
+import Menu from "./globals/menu";
+import Navbar from "./globals/navbar";
 import "./globals.css";
 
-import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-    title: "TrueOneK",
-    description: "Redefining Fan Engagement for the Digital Age"
-};
 
 // eslint-disable-next-line no-undef
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -16,7 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ViewTransitions>
             <html lang="en">
                 <body className={inter.className}>
+                    <Navbar />
                     {children}
+                    <Menu />
                 </body>
             </html>
         </ViewTransitions>

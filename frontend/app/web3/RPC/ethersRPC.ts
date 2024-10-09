@@ -13,6 +13,7 @@ const getChainId = async (provider: IProvider): Promise<any> => {
 
 const getAccounts = async (provider: IProvider): Promise<any> => {
     try {
+
         const ethersProvider = new ethers.BrowserProvider(provider);
         const signer = await ethersProvider.getSigner();
 
@@ -46,6 +47,7 @@ const getBalance = async (provider: IProvider): Promise<string> => {
 
 const sendTransaction = async (provider: IProvider): Promise<any> => {
     try {
+
         const ethersProvider = new ethers.BrowserProvider(provider);
         const signer = await ethersProvider.getSigner();
 
@@ -59,7 +61,7 @@ const sendTransaction = async (provider: IProvider): Promise<any> => {
             to: destination,
             value: amount,
             maxPriorityFeePerGas: fees.maxPriorityFeePerGas, // Max priority fee per gas
-            maxFeePerGas: fees.maxFeePerGas, // Max fee per gas
+            maxFeePerGas: fees.maxFeePerGas // Max fee per gas
         });
 
         // Wait for transaction to be mined

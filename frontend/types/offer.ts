@@ -1,18 +1,20 @@
+import { Socials } from "./socials";
+
 export interface Offer {
     id: number;
-    author: string;
-    author_img: string;
+    tier: "bronze" | "silver" | "gold" | "platinum" | "diamond";
+    paid: boolean;
+    price: number;
+    artist_name: string;
+    artist_image: string;
     title: string;
     description: string;
     location: string;
     location_url: string;
     time: number;
     headcount: number;
-    thumbnail: string;
+    image: string;
     requirements?: string;
-    social_links?: {
-        youtube?: string,
-        twitter?: string
-    };
-    offer?: false;
+    social_links?: Socials;
+    // special_offer?: any; // from the design
 };

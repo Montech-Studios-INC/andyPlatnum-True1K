@@ -7,14 +7,24 @@ interface NFTCardProps {
 
 const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {
     return (
-        <Card className="w-20 max-w-md overflow-hidden">
+        <Card className="w-full max-w-52 overflow-hidden border-none">
             <CardContent className="p-0">
                 <div className="relative aspect-square">
-                    <img
-                        src={nft.thumbnail}
-                        alt={nft.name}
-                        className="w-full h-full object-cover"
-                    />
+                    {nft.url ? (
+                        <a href={nft.url} target="_blank">
+                            <img
+                                src={nft.image}
+                                alt={nft.name}
+                                className="w-full h-full object-cover"
+                            />
+                        </a>
+                    ) : (
+                        <img
+                            src={nft.image}
+                            alt={nft.name}
+                            className="w-full h-full object-cover"
+                        />
+                    )}
                 </div>
             </CardContent>
         </Card>

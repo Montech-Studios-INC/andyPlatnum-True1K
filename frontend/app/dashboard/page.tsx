@@ -1,7 +1,7 @@
 import AllStats from "./containers/stats";
 import AllNFTs from "./containers/nfts";
 import AllHistory from "./containers/history";
-import { mockStats, mockNFTs, mockHistory } from "@/app/data";
+import { mockStats, mockNFTs, mockOffers } from "@/app/data";
 
 export const metadata = {
     title: "TrueOneK | Dashboard",
@@ -15,7 +15,7 @@ export default async function Dashboard() {
     // const offerHistory = await getAllOfferHistory(user);
     const stats = mockStats;
     const nfts = mockNFTs;
-    const offerHistory = mockHistory;
+    const offerHistory = mockOffers;
 
     return (
         <>

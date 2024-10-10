@@ -15,22 +15,22 @@ const OfferCard: React.FC<OfferCardProps> = ({ trendingOffer }) => {
     const date = new Date(trendingOffer.time);
 
     return (
-        <CarouselItem key={trendingOffer.id} style={{ viewTransitionName: `trending-offer-${trendingOffer.title}` }}>
+        <CarouselItem>
             <Link href={`/browse/${trendingOffer.id}`} scroll={false}>
-                <Card className="w-full h-48 relative overflow-hidden rounded-xl">
+                <Card className="w-full h-48 relative overflow-hidden rounded-xl border-none">
                     <img
-                        src={trendingOffer.thumbnail}
+                        src={trendingOffer.image}
                         alt={trendingOffer.title}
                         className="absolute inset-0 w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
+                    <div className="absolute inset-0" />
                     <CardContent className="relative h-full flex flex-col justify-between p-4">
                         <div className="flex items-center space-x-2">
                             <Avatar className="w-8 h-8 border-2 border-white">
-                                <AvatarImage src={trendingOffer.author_img} alt={trendingOffer.author} />
-                                <AvatarFallback>{trendingOffer.author}</AvatarFallback>
+                                <AvatarImage src={trendingOffer.artist_image} alt={trendingOffer.artist_name} />
+                                <AvatarFallback>{trendingOffer.artist_name}</AvatarFallback>
                             </Avatar>
-                            <span className="text-white text-sm font-semibold">{trendingOffer.author}</span>
+                            <span className="text-white text-sm font-semibold">{trendingOffer.artist_name}</span>
                         </div>
                         <div className="space-y-1">
                             <h3 className="text-white text-xl font-bold">{trendingOffer.title}</h3>
@@ -53,4 +53,3 @@ const OfferCard: React.FC<OfferCardProps> = ({ trendingOffer }) => {
 };
 
 export default OfferCard;
-

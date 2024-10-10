@@ -2,7 +2,7 @@ import { Socials } from "./socials";
 
 export interface Offer {
     id: number;
-    tier: "bronze" | "silver" | "gold" | "platinum" | "diamond";
+    tier: "Bronze" | "Silver" | "Gold" | "Platinum" | "Diamond";
     paid: boolean;
     price: number;
     artist_name: string;
@@ -16,5 +16,5 @@ export interface Offer {
     image: string;
     requirements?: string;
     social_links?: Socials;
-    // special_offer?: any; // from the design
+    special_offer?: any; // from the design
 };
